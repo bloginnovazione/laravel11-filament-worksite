@@ -1,0 +1,26 @@
+[31-Jul-2024 07:43:27 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 8.2.0". You are running 7.4.33. in /home/skswhsva/situs/vendor/composer/platform_check.php on line 24
+[31-Jul-2024 08:59:44 UTC] PHP Warning:  require_once(/home/skswhsva/situs/../bootstrap/app.php): Failed to open stream: No such file or directory in /home/skswhsva/situs/index.php on line 15
+[31-Jul-2024 08:59:44 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/skswhsva/situs/../bootstrap/app.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/skswhsva/situs/index.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/skswhsva/situs/index.php on line 15
+[31-Jul-2024 09:00:50 UTC] PHP Warning:  require_once(/home/skswhsva/situs/../bootstrap/app.php): Failed to open stream: No such file or directory in /home/skswhsva/situs/index.php on line 15
+[31-Jul-2024 09:00:50 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/skswhsva/situs/../bootstrap/app.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/skswhsva/situs/index.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/skswhsva/situs/index.php on line 15
+[31-Jul-2024 09:01:28 UTC] PHP Warning:  require_once(/home/skswhsva/situs/../bootstrap/app.php): Failed to open stream: No such file or directory in /home/skswhsva/situs/index.php on line 15
+[31-Jul-2024 09:01:28 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/skswhsva/situs/../bootstrap/app.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/skswhsva/situs/index.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/skswhsva/situs/index.php on line 15
+[31-Jul-2024 09:01:51 UTC] PHP Warning:  require_once(/home/skswhsva/situs/../bootstrap/app.php): Failed to open stream: No such file or directory in /home/skswhsva/situs/index.php on line 15
+[31-Jul-2024 09:01:51 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/skswhsva/situs/../bootstrap/app.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/skswhsva/situs/index.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/skswhsva/situs/index.php on line 15
+[31-Jul-2024 09:02:08 UTC] PHP Warning:  require_once(/home/skswhsva/situs/../bootstrap/app.php): Failed to open stream: No such file or directory in /home/skswhsva/situs/index.php on line 15
+[31-Jul-2024 09:02:08 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/skswhsva/situs/../bootstrap/app.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/skswhsva/situs/index.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/skswhsva/situs/index.php on line 15
