@@ -1,66 +1,80 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<h3 class="wp-block-heading" id="6-progetto-vendite-immobili">Property Sales Project</h3>
+<p>I recently developed a small property/construction site management project and related property marketing and sales campaigns.</p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+If you want to delve deeper into the structure of the project you can click on this link to access the repository on GitHub.
 
-## About Laravel
+In the project I created some Resources:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+ChannelResource: for the management of Sales Channels;
+HouseResource: for the management of properties
+MarketingResource:: for the management of Marketing activities
+SaleResource: for Sales management
+WorkSite: for the management of construction sites
+I set up a navigation menu by grouping the items. Below I report the settings made within the class ChannelResource: the menu item Channel is grouped in Marketing, with icon globe-alt, labels Canali and fifth in the order of navigation menu items.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+protected static ?string $model = Channel::class;
+protected static ?string $navigationGroup = 'Marketing';
+protected static ?string $navigationIcon = 'heroicon-o-globe-alt';
+protected static ?string $navigationLabel = 'Canali';
+protected static ?int $navigationSort = 5;
+Form
+In the Property Management Form we used different types of information:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Select: to allow the choice of the construction site of which the property is part, taking advantage of the one-to-many relationship worksite specified in model
 
-## Learning Laravel
+Forms\Components\Select::make('worksite_id')
+                    ->label('Cantiere')
+                    ->relationship('worksite', 'name')
+                    ->required(),
+TextInput: to allow setting the property code, mandatory entry, Code label, and maximum length 15 characters
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Forms\Components\TextInput::make('code')
+                    ->label('Codice')
+                    ->required()
+                    ->maxLength(15),
+Select: so that it is possible to choose the type of property between apartment and villa
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Forms\Components\Select::make('type')
+                    ->label('Tipologia')
+                    ->options([
+                        'appartamento' => 'Appartamento',
+                        'villa' => 'Villa',
+                    ]),
+FileUpLoad: to allow the uploading of the image of the property, where:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+preserveFilenames: to keep the original name of the file
+imagePreviewHeight: for definite the size (height) of the image preview
+imageResizeTargetWidth e imageResizeTargetHeight: for redefinise the height and width of the uploaded image
+Forms\Components\FileUpload::make('attachment')
+                    ->image()
+                    ->preserveFilenames()
+                    ->imageResizeMode('cover')
+                    ->imageCropAspectRatio('16:9')
+                    ->imageResizeTargetWidth('300')
+                    ->imageResizeTargetHeight('150')
+                    ->imagePreviewHeight('250')
+                    ->loadingIndicatorPosition('left')
+                    ->panelAspectRatio('2:1')
+                    ->panelLayout('integrated')
+                    ->removeUploadedFileButtonPosition('right')
+                    ->uploadButtonPosition('left')
+                    ->uploadProgressIndicatorPosition('left'),
+RichEditor: to allow the field to be loaded followup with the style setting and editing toolbar
 
-## Laravel Sponsors
+Forms\Components\RichEditor::make('followup')
+                    ->label('Follow Up')
+                    ->maxLength(255),
+Table
+In the list of loaded items, we used the following methods:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+ImageColumn: to view the photo of the property stored in the field attachment
 
-### Premium Partners
+Tables\Columns\ImageColumn::make('attachment')
+                    ->label('Foto'),
+TextColumn: displaying the price of the property for sale, making the information searchable and orderable
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Tables\Columns\TextColumn::make('price')
+                    ->label('Prezzo')
+                    ->searchable()
+                    ->sortable(),
+BlogInnovazione.it
